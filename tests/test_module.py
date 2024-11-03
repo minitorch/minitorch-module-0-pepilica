@@ -48,8 +48,6 @@ def test_stacked_demo() -> None:
     mod = ModuleA1()
     np = dict(mod.named_parameters())
 
-    x = str(mod)
-    print(x)
     assert mod.p1.value == 5
     assert mod.non_param == 10
 
