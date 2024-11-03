@@ -53,11 +53,11 @@ class Module:
             The name and `Parameter` of each ancestor parameter.
 
         """
-        parameters = self._parameters.copy()
+        parameters = list(self._parameters.items())
         for name, module in self._modules.items():
             child_params = module.named_parameters()
-            for k, v in child_params.items():
-                parameters[name + '.' + k] = v
+            for k, v in child_params:
+                parameters.append((name + '.' + k, v))
         return parameters
         # TODO: Implement for Task 0.4.
         raise NotImplementedError("Need to implement for Task 0.4")
