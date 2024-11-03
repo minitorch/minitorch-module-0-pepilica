@@ -57,7 +57,7 @@ class Module:
         for name, module in self._modules.items():
             child_params = module.named_parameters()
             for k, v in child_params:
-                parameters.append((name + '.' + k, v))
+                parameters.append((name + "." + k, v))
         return parameters
         # TODO: Implement for Task 0.4.
         raise NotImplementedError("Need to implement for Task 0.4")

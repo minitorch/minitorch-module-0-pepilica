@@ -67,7 +67,9 @@ def is_close(a: float, b: float) -> bool:
 
 
 def sigmoid(x: float) -> float:
-    return (1. / (1. + math.exp(-x))) if x >= 0 else (math.exp(x) / (1. + math.exp(x)))
+    return (
+        (1.0 / (1.0 + math.exp(-x))) if x >= 0 else (math.exp(x) / (1.0 + math.exp(x)))
+    )
 
 
 def relu(x: float) -> float:
@@ -83,7 +85,7 @@ def exp(x: float) -> float:
 
 
 def inv(x: float) -> float:
-    return 1. / x
+    return 1.0 / x
 
 
 def log_back(x: float, c: float = 1) -> float:
@@ -91,7 +93,7 @@ def log_back(x: float, c: float = 1) -> float:
 
 
 def inv_back(x: float, c: float = 1) -> float:
-    return -c / x ** 2
+    return -c / x**2
 
 
 def relu_back(x: float, c: float = 1) -> float:
@@ -121,12 +123,15 @@ def relu_back(x: float, c: float = 1) -> float:
 
 # TODO: Implement for Task 0.3.
 
+
 def map(iter: Iterable[Any], func: Callable[[Any], float]) -> Iterable[float]:
     for i in iter:
         yield func(i)
 
 
-def zipWith(iter1: Iterable[float], iter2: Iterable[float]) -> Iterable[Tuple[float, float]]:
+def zipWith(
+    iter1: Iterable[float], iter2: Iterable[float]
+) -> Iterable[Tuple[float, float]]:
     iter2_iterator = iter(iter2)
     i2: float = 0.0
     is_second_exhausted = False
@@ -140,7 +145,9 @@ def zipWith(iter1: Iterable[float], iter2: Iterable[float]) -> Iterable[Tuple[fl
         yield (i1, i2)
 
 
-def reduce(iter: Iterable[float], func: Callable[..., float], init_value: float = 0.0) -> float:
+def reduce(
+    iter: Iterable[float], func: Callable[..., float], init_value: float = 0.0
+) -> float:
     cur_value = init_value
     for i in iter:
         cur_value = func(cur_value, i)
